@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Obtenha seu diploma reconhecido através da sua experiência profissional.">
+    <meta name="theme-color" content="#0f172a"> <title>Certificação por Competência</title>
+    
+    <link rel="manifest" href="manifest.json">
+    
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-gradient"></div>
+
+    <main id="app">
+        <div class="loader-container">
+            <div class="spinner"></div>
+            <p>Carregando oportunidades...</p>
+        </div>
+    </main>
+
+    <nav class="bottom-nav">
+        <button class="nav-btn active" data-target="home">
+            <span class="icon">🏠</span>
+            <span class="label">Início</span>
+        </button>
+        <button class="nav-btn" data-target="search">
+            <span class="icon">🔍</span>
+            <span class="label">Buscar</span>
+        </button>
+        <button class="nav-btn" data-target="profile">
+            <span class="icon">👤</span>
+            <span class="label">Perfil</span>
+        </button>
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script type="module" src="assets/js/app.js"></script>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('PWA registrado!', reg))
+                    .catch(err => console.log('Erro no PWA:', err));
+            });
+        }
+    </script>
+</body>
+</html>
