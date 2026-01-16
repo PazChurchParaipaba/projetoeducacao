@@ -1,0 +1,142 @@
+:root {
+    /* Paleta de Cores Premium */
+    --bg-dark: #0f172a;       /* Azul marinho profundo */
+    --primary: #3b82f6;       /* Azul vibrante */
+    --accent: #f59e0b;        /* Dourado para "Certificação" */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    /* Variáveis do Vidro (Glassmorphism) */
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --blur: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent; /* Remove highlight azul no mobile */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-bottom: 80px; /* Espaço para a nav inferior */
+}
+
+/* Fundo Gradiente Animado (Sutil) */
+.bg-gradient {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at top right, #1e3a8a 0%, transparent 40%),
+                radial-gradient(circle at bottom left, #3b82f6 0%, transparent 40%);
+    opacity: 0.4;
+    z-index: -1;
+}
+
+/* O Card "Glass" Padrão */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur));
+    -webkit-backdrop-filter: blur(var(--blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 16px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Bottom Navigation (Flutuante e Vidro) */
+.bottom-nav {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    height: 70px;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 35px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    z-index: 100;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75rem;
+    gap: 4px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-btn.active {
+    color: var(--primary);
+}
+
+.nav-btn .icon {
+    font-size: 1.2rem;
+}
+
+/* Loader Simples */
+.loader-container {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+}
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--glass-border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Adicione no final do arquivo */
+
+#app {
+    opacity: 1;
+    /* Isso permite o efeito de fade-in/fade-out que coloquei no JS */
+    transition: opacity 0.2s ease-in-out; 
+}
+
+/* Estilo para inputs focados (para a busca ficar bonita) */
+input:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+/* Input Placeholder Styling */
+::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Erro no formulário */
+#msgError {
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+/* Botão desabilitado */
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
